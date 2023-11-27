@@ -39,7 +39,7 @@ while [ "$opcion" -ne 4 ]; do
                 if [ "$numAsistentesVuelo" -ge 1 ]; then
                     echo "Ejecutando..."
                     ./programa "$numAsistentesVuelo"
-                    break
+                    
                 else
                     echo "ERROR: El numero de asistentes tiene que ser >= 1"
                 fi
