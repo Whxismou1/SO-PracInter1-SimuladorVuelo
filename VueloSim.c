@@ -80,12 +80,12 @@ int main(int argc, char const *argv[])
                 perror("ERROR: responsible signal\n");
             }
             pause();
-
+            sleep(2);
             srand(getpid());
             // calcula un aleatrio [1 overbooking | 0 no overbooking]
             int numOver = generateRandom(0, 1);
             // duerme 2 segundos
-            sleep(2);
+            // sleep(2);
             // sale con el aleatorio [1 overbooking | 0 no overbooking]
             exit(numOver);
         }
@@ -142,7 +142,6 @@ int main(int argc, char const *argv[])
             if (exitCodeStatus != 0)
             {
                 // Si entra aqui significa que el estado de exit es [1] por tanto el vuelo es viable
-                printf("Vuelo viable\n");
                 // Duerme un segundo
                 sleep(1);
                 // Manda la señal al encargado
@@ -183,7 +182,7 @@ int main(int argc, char const *argv[])
                  *En este caso como ha ido bien mandamos un 0 por parametro*/
                 printFinalFree(numAsistentesArr, numPassengers, 0);
             }
-            else
+            else if(exitCodeStatus == 0)
             {
                 // Si entra aqui significa que el estado de exit es [0] por tanto el vuelo es inviable
                 for (int i = 0; i < numAsistentes; i++)
@@ -223,7 +222,7 @@ void errorPid(pid_t pid)
 {
     if (pid < 0)
     {
-        printf("ERROR: fork()");
+        printf("ERROR: fork()\n");
         exit(1);
     }
 }
